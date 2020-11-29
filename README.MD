@@ -6,6 +6,6 @@ The truest guide to your local eats...
 - [x] skeleton
 - [x] file structure
 - [x] navigation-ish
-- [] navigation
-- [] logic
-- [] UI clean-up
+- [ ] navigation
+- [ ] logic
+- [ ] UI clean-up
