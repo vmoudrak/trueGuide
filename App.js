@@ -1,13 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import About from "./components/About/About"
+import DetailsContainer from './components/Details/DetailsContainer';
+import Home from './components/Home';
 
 export default function App() {
+  const Stack =  createStackNavigator();
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen 
+          name="Home" 
+          component={Home} 
+          options={({ navigation }) => ({
+            title:'True Guide',
+            headerRight: () => (
+              <Button
+                title="About Us" 
+                onPress={() => navigation.navigate("About Screen")}
+              />
+            ),
+            })}
+          />
+          <Stack.Screen name="About Screen" component={About} options={{ title: 'About Screen' }} />
+          <Stack.Screen name="Details" component={DetailsContainer} options={{ title: 'Restaurant Details' }} ></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 
