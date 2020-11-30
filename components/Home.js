@@ -49,14 +49,14 @@ export default function home({ navigation }) {
             {!searchText && (restaurants.map(restaurant => (
                 <View>
                     <RestaurantInfo restaurant={restaurant}/>
-                    <Button key={} title={"See more details"}
+                    <Button key={restaurant.key} title={"See more details"}
         onPress={() => navigation.navigate('Details', {"restaurant": restaurant})} />
                 </View>
             )))}
             {searchText != "" &&  (filterBySearchText().map(restaurant => (
                 <View>
                     <RestaurantInfo restaurant={restaurant}/>
-                    <Button
+                    <Button key={restaurant.key}
         title={"See more details"}
         onPress={() => navigation.navigate('Details', {"restaurant": restaurant})}
       />
