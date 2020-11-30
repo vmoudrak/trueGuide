@@ -12,11 +12,18 @@ export default function App() {
   return (
     <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen 
+          <Stack.Screen
           name="Home" 
           component={Home} 
           options={({ navigation }) => ({
             title:'True Guide',
+            headerStyle: {
+              backgroundColor: '#1818b4'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold'
+            },
             headerRight: () => (
               <Button
                 title="About Us" 
@@ -35,7 +42,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#d2d2f9',
     alignItems: 'center',
     justifyContent: 'center',
   },

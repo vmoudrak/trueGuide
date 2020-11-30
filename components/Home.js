@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, StyleSheet } from 'react-native'
 import RestaurantInfo from './Resuseables/RestaurantInfo'
 
 export default function home({ navigation }) {
@@ -45,28 +45,32 @@ export default function home({ navigation }) {
     const filterBySearchText = () =>
     matchSorter(restaurants, searchText, { keys: ["name", "tags"] });
     return (
-        <View>
+        <View style={styles.container}>
             {!searchText && (restaurants.map(restaurant => (
-                <View>
+                <View style={{ margin:10 }}>
                     <RestaurantInfo 
                         key={restaurant.id} 
                         restaurant={restaurant}
                     />
                     <Button  
+                        color="#6495ed"
+                        type="raised"
                         title={"See more details"}
                         onPress={() => navigation.navigate('Details', {"restaurant": restaurant})} 
                     />
                 </View>
             )))}
             {searchText != "" &&  (filterBySearchText().map(restaurant => (
-                <View>
+                <View style={{ margin: 10 }}>
                     <RestaurantInfo 
                         key={restaurant.id} 
                         restaurant={restaurant}
                     />
                     <Button
+                        color="#6495ed"
+                        type="raised"
                         title={"See more details"}
-                        onPress={() => navigation.navigate('Details', {"restaurant": restaurant})}
+                        onPress={() => navigation.navigate('Details', { "restaurant": restaurant })} 
                     />
                 </View>
             )))}
@@ -74,3 +78,8 @@ export default function home({ navigation }) {
     )
 }
 
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#d2d2f9',
+    },
+});
