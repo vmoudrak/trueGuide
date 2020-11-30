@@ -48,18 +48,26 @@ export default function home({ navigation }) {
         <View>
             {!searchText && (restaurants.map(restaurant => (
                 <View>
-                    <RestaurantInfo restaurant={restaurant}/>
-                    <Button key={} title={"See more details"}
-        onPress={() => navigation.navigate('Details', {"restaurant": restaurant})} />
+                    <RestaurantInfo 
+                        key={restaurant.id} 
+                        restaurant={restaurant}
+                    />
+                    <Button  
+                        title={"See more details"}
+                        onPress={() => navigation.navigate('Details', {"restaurant": restaurant})} 
+                    />
                 </View>
             )))}
             {searchText != "" &&  (filterBySearchText().map(restaurant => (
                 <View>
-                    <RestaurantInfo restaurant={restaurant}/>
+                    <RestaurantInfo 
+                        key={restaurant.id} 
+                        restaurant={restaurant}
+                    />
                     <Button
-        title={"See more details"}
-        onPress={() => navigation.navigate('Details', {"restaurant": restaurant})}
-      />
+                        title={"See more details"}
+                        onPress={() => navigation.navigate('Details', {"restaurant": restaurant})}
+                    />
                 </View>
             )))}
         </View>
