@@ -23,7 +23,7 @@ const DetailsContainer = (props) => {
                 </View>
             </View>
             <View>
-                <Map><Text>Map goes here</Text></Map>
+                <Map/>
             </View>
         </View>
     )
