@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { View, Text, Button } from 'react-native'
 import RestaurantInfo from './Resuseables/RestaurantInfo'
+import RatingWithStar from './Rating/RatingWithStar';
+
 
 export default function home({ navigation }) {
     const restaurants = [
@@ -41,27 +43,54 @@ export default function home({ navigation }) {
             tags: ["talian","nona","meatballs"]
         }
     ]
+
     const [searchText, setSearchText] = useState("", []);
+<<<<<<< HEAD
     const filterBySearchText = () =>
     matchSorter(restaurants, searchText, { keys: ["name", "tags"] });
+=======
+
+    const filterBySearchText = () => matchSorter(restaurants, searchText, { keys: ["name"] });
+
+
+>>>>>>> 30b557d... add rating
     return (
         <View>
+
             {!searchText && (restaurants.map(restaurant => (
                 <View>
+<<<<<<< HEAD
                     <RestaurantInfo restaurant={restaurant}/>
                     <Button key={restaurant.key} title={"See more details"}
         onPress={() => navigation.navigate('Details', {"restaurant": restaurant})} />
+=======
+                    <RestaurantInfo restaurant={restaurant} />
+                    <RatingWithStar/>
+                    <Button title={"See more details"}
+                        onPress={() => navigation.navigate('Details', { "restaurant": restaurant })} />
+>>>>>>> 30b557d... add rating
                 </View>
             )))}
-            {searchText != "" &&  (filterBySearchText().map(restaurant => (
+            {searchText != "" && (filterBySearchText().map(restaurant => (
                 <View>
+<<<<<<< HEAD
                     <RestaurantInfo restaurant={restaurant}/>
                     <Button key={restaurant.key}
         title={"See more details"}
         onPress={() => navigation.navigate('Details', {"restaurant": restaurant})}
       />
+=======
+                    <RestaurantInfo restaurant={restaurant} />
+             
+                    <Button
+                        title={"See more details"}
+                        onPress={() => navigation.navigate('Details', { "restaurant": restaurant })}
+                    />
+>>>>>>> 30b557d... add rating
                 </View>
+                
             )))}
+   
         </View>
     )
 }
