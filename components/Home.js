@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native'
 import RestaurantInfo from './Resuseables/RestaurantInfo'
 import RatingWithStar from './Rating/RatingWithStar';
-
+import { SearchBar } from 'react-native-elements'
+import {matchSorter} from "match-sorter";
 
 export default function home({ navigation }) {
     const restaurants = [
@@ -58,6 +59,11 @@ export default function home({ navigation }) {
 
     return (
         <View style={styles.container}>
+            <SearchBar
+        placeholder="Type Here..."
+        onChangeText={value => setSearchText(value)}
+        value={searchText}
+      />
             {!searchText && (restaurants.map(restaurant => (
                 <View style={{ margin:10 }}>
                     <RestaurantInfo 
