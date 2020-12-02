@@ -8,21 +8,14 @@
     "eject": "expo eject"
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
     "@mapbox/polyline": "^1.1.1",
->>>>>>> upstream/master
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-maps/polyline-direction": "^1.0.0",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
-<<<<<<< HEAD
     "expo": "~39.0.2",
     "expo-sharing": "~8.4.1",
-=======
-    "expo": "^39.0.5",
->>>>>>> upstream/master
     "expo-status-bar": "~1.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
