@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text } from 'react-native'
 import RestaurantInfo from '../Resuseables/RestaurantInfo'
-import Map from "../Resuseables/Map";
+import MapA from "../Map/MapA";
 
 
 const DetailsContainer = (props) => {
     console.log(props.route.params)
     const { restaurant } = props.route.params;
+    const [Longitude, setLongitude] = useState(restaurant.longitude);
+    const [Latitude, setLatitude] = useState(restaurant.latitude);
+
     return (
         <View>
             <View>
@@ -22,7 +25,7 @@ const DetailsContainer = (props) => {
 
                 </View>
                 <View>                   
-                        <Map />
+                    <MapA longitudeOfRes={Longitude} latitudeOfRes={Latitude} />
                 </View>
             </View>
 
