@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import RestaurantInfo from '../Resuseables/RestaurantInfo'
-import Map from "../Resuseables/Map";
+import MapA from "../Map/MapA";
 
 
 const DetailsContainer = (props) => {
     console.log(props.route.params)
     const { restaurant } = props.route.params;
+    const [Longitude, setLongitude] = useState(restaurant.longitude);
+    const [Latitude, setLatitude] = useState(restaurant.latitude);
+
     return (
         <View style={styles.container}>
             <View>
@@ -20,8 +23,8 @@ const DetailsContainer = (props) => {
 
                     </Text>
                 </View>
-                <View>
-                    <Share><Text>FB, Twitter, Email goes here</Text></Share>
+                <View>                   
+                    <MapA longitudeOfRes={Longitude} latitudeOfRes={Latitude} />
                 </View>
             </View>
             <View>
