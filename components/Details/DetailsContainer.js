@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { View, Text ,Button,Icon } from 'react-native'
 import RestaurantInfo from '../Resuseables/RestaurantInfo'
 import Share from '../Resuseables/Share';
 import Map from "../Resuseables/Map"
 import * as Sharing from 'expo-sharing';
+import RestaurantInfo from '../Resuseables/RestaurantInfo'
+import MapA from "../Map/MapA";
 
 const DetailsContainer = (props) => {
     console.log(props.route.params)
@@ -26,17 +28,23 @@ const DetailsContainer = (props) => {
           alert(error.message);
         }
       };
-      return (
-        <View style={{ marginTop: 50 }}>
-          <Button onPress={onShare} title="Share" />
-        </View>
-      );
-    }
+      
+
+
+
+
+
+    console.log(props.route.params)
+    const { restaurant } = props.route.params;
+    const [Longitude, setLongitude] = useState(restaurant.longitude);
+    const [Latitude, setLatitude] = useState(restaurant.latitude);
+
     return (
-        <View>
+        <View style={styles.container}>
             <View>
                 <RestaurantInfo restaurant={restaurant}></RestaurantInfo>
             </View>
+
             <View>
                 <View>
                     <Text>
@@ -45,18 +53,26 @@ const DetailsContainer = (props) => {
 
     <Button icon={<Icon name="arrow-right" size={15} color="white"/>} title={"SHARE"}  onPress={onShare}   />
                     </Text>
-                    
+          
                 </View>
-                <View>
-
-                <Share></Share>
+                <View>                   
+                    <MapA longitudeOfRes={Longitude} latitudeOfRes={Latitude} />
                 </View>
             </View>
             <View>
-                <Map></Map>
+                <Map/>
             </View>
         </View>
+
     )
 }
 
+
+
 export default DetailsContainer
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#d2d2f9',
+    },
+});
