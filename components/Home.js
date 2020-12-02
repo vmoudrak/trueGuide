@@ -57,19 +57,44 @@ export default function home({ navigation }) {
     const filterBySearchText = () => matchSorter(restaurants, searchText, { keys: ["name", "tags"] });
 
     return (
-        <View>
-
+        <View style={styles.container}>
             {!searchText && (restaurants.map(restaurant => (
-                <View>
-
-                    <RestaurantInfo restaurant={restaurant} />
-                      <RatingWithStar />
-                    <Button key={restaurant.key} title={"See more details"}
-                        onPress={() => navigation.navigate('Details', { "restaurant": restaurant })} />
+                <View style={{ margin:10 }}>
+                    <RestaurantInfo 
+                        key={restaurant.id} 
+                        restaurant={restaurant}
+                    />
+                    <Button  
+                        color="#6495ed"
+                        type="raised"
+                        title={"See more details"}
+                        onPress={() => navigation.navigate('Details', {"restaurant": restaurant})} 
+                    />
                 </View>
             )))}
+            {searchText != "" &&  (filterBySearchText().map(restaurant => (
+                <View style={{ margin: 10 }}>
+                    <RestaurantInfo 
+                        key={restaurant.id} 
+                        restaurant={restaurant}
+                    />
+                    <Button
+                        color="#6495ed"
+                        type="raised"
+                        title={"See more details"}
+                        onPress={() => navigation.navigate('Details', { "restaurant": restaurant })} 
+                    />
 
+                </View>
+                
+            )))}
+   
         </View>
     )
 }
 
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#d2d2f9',
+    },
+});

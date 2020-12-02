@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import RestaurantInfo from '../Resuseables/RestaurantInfo'
 import MapA from "../Map/MapA";
 
@@ -11,7 +11,7 @@ const DetailsContainer = (props) => {
     const [Latitude, setLatitude] = useState(restaurant.latitude);
 
     return (
-        <View>
+        <View style={styles.container}>
             <View>
                 <RestaurantInfo restaurant={restaurant}></RestaurantInfo>
             </View>
@@ -22,13 +22,14 @@ const DetailsContainer = (props) => {
                         {restaurant.details}
 
                     </Text>
-
                 </View>
                 <View>                   
                     <MapA longitudeOfRes={Longitude} latitudeOfRes={Latitude} />
                 </View>
             </View>
-
+            <View>
+                <Map/>
+            </View>
         </View>
 
     )
@@ -37,3 +38,9 @@ const DetailsContainer = (props) => {
 
 
 export default DetailsContainer
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#d2d2f9',
+    },
+});
