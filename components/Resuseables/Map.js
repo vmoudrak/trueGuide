@@ -1,13 +1,25 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import MapView, {PROVIDER_GOOGLE} from "react-native-maps";
 
+const styles = StyleSheet.create({
+    container: {
+      ...StyleSheet.absoluteFillObject,
+      height: 400,
+      width: 400,
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+    },
+    map: {
+      ...StyleSheet.absoluteFillObject,
+    },
+   });
 
 const Map = () => {
     return (
-        <View>
+        <View style={styles.container}>
             <MapView
-                style={{ flex: 1 }}
+                style={styles.map}
                 provider={PROVIDER_GOOGLE}
             >
             </MapView>

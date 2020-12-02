@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
-import { View, Text, Button, StyleSheet } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, Button } from 'react-native'
 import RestaurantInfo from './Resuseables/RestaurantInfo'
+import RatingWithStar from './Rating/RatingWithStar';
+
 
 export default function home({ navigation }) {
     const restaurants = [
@@ -41,9 +43,12 @@ export default function home({ navigation }) {
             tags: ["talian","nona","meatballs"]
         }
     ]
+
     const [searchText, setSearchText] = useState("", []);
-    const filterBySearchText = () =>
-    matchSorter(restaurants, searchText, { keys: ["name", "tags"] });
+
+    const filterBySearchText = () => matchSorter(restaurants, searchText, { keys: ["name"] });
+
+
     return (
         <View style={styles.container}>
             {!searchText && (restaurants.map(restaurant => (
@@ -72,8 +77,11 @@ export default function home({ navigation }) {
                         title={"See more details"}
                         onPress={() => navigation.navigate('Details', { "restaurant": restaurant })} 
                     />
+
                 </View>
+                
             )))}
+   
         </View>
     )
 }
