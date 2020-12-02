@@ -2,7 +2,13 @@ import React, {useState} from 'react'
 import { View, Text, Button } from 'react-native'
 import RestaurantInfo from './Resuseables/RestaurantInfo'
 
+
+
+
+
+
 export default function home({ navigation }) {
+    
     const restaurants = [
         {
             name: "Dinos",
@@ -33,28 +39,39 @@ export default function home({ navigation }) {
             details: "A cozy resauraunt with a very home-y vibe.... Lots of food"
         }
     ]
+
+
     const [searchText, setSearchText] = useState("", []);
     const filterBySearchText = () =>
+    
     matchSorter(restaurants, searchText, { keys: ["name"] });
     return (
         <View>
             {!searchText && (restaurants.map(restaurant => (
                 <View>
                     <RestaurantInfo restaurant={restaurant}/>
-                    <Button  title={"See more details"}
+                    <Button  title={"See more details"} 
         onPress={() => navigation.navigate('Details', {"restaurant": restaurant})} />
                 </View>
+                
+                
             )))}
+           
             {searchText != "" &&  (filterBySearchText().map(restaurant => (
                 <View>
                     <RestaurantInfo restaurant={restaurant}/>
                     <Button
         title={"See more details"}
         onPress={() => navigation.navigate('Details', {"restaurant": restaurant})}
+        
       />
+  
+      
+                
                 </View>
             )))}
         </View>
     )
-}
-
+    
+    
+            }
