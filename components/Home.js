@@ -5,7 +5,13 @@ import RatingWithStar from './Rating/RatingWithStar';
 import { SearchBar } from 'react-native-elements'
 import {matchSorter} from "match-sorter";
 
+
+
+
+
+
 export default function home({ navigation }) {
+    
     const restaurants = [
         {
             id: 1,
@@ -78,7 +84,10 @@ export default function home({ navigation }) {
                         onPress={() => navigation.navigate('Details', {"restaurant": restaurant})} 
                     />
                 </View>
+                
+                
             )))}
+           
             {searchText != "" &&  (filterBySearchText().map(restaurant => (
                 <View style={{ margin: 10 }}>
                     <RestaurantInfo 
