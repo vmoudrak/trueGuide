@@ -189,65 +189,66 @@ export default function home({ navigation }) {
           ))}
         </View>
       )}
-      {tagSearch != "" && 
-      <View>
+      {tagSearch != "" && (
+        <View>
           <View style={{ marginBottom: 0, marginTop: 10, marginEnd: 5 }}>
-              <Badge
-                status="primary"
-                textStyle={{ color: "red" }}
-                badgeStyle={{
-                  padding: 10,
-                  backgroundColor: "#d2d2f9",
-                  borderColor: "red",
-                }}
-                value={"Clear Tags"}
-                Component={TouchableOpacity}
-                onPress={() => setTagSearch("")}
-              />
-            </View>
-        {filterByTagText().map((restaurant) => (
-          <View style={{ margin: 10 }}>
-            
-            <RestaurantInfo key={restaurant.id} restaurant={restaurant} />
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "flex-start",
-                alignItems: "flex-start",
+            <Badge
+              status="primary"
+              textStyle={{ color: "red" }}
+              badgeStyle={{
+                padding: 10,
+                backgroundColor: "#d2d2f9",
+                borderColor: "red",
               }}
-            >
-              {restaurant.tags.map((tag) => (
-                <View style={{ marginBottom: 25, marginTop: 10, marginEnd: 5 }}>
-                  <Badge
-                    status="primary"
-                    textStyle={{ color: "black" }}
-                    badgeStyle={{
-                      padding: 10,
-                      backgroundColor: "#d2d2f9",
-                      borderColor: "blue",
-                    }}
-                    value={tag}
-                    Component={TouchableOpacity}
-                    onPress={() => {
-                      setTagSearch(tag);
-                    }}
-                  />
-                </View>
-              ))}
-            </View>
-            <RatingWithStar />
-            <Button
-              color="#6495ed"
-              type="raised"
-              title={"See more details"}
-              onPress={() =>
-                navigation.navigate("Details", { restaurant: restaurant })
-              }
+              value={"Clear Tags"}
+              Component={TouchableOpacity}
+              onPress={() => setTagSearch("")}
             />
           </View>
-        ))}
+          {filterByTagText().map((restaurant) => (
+            <View style={{ margin: 10 }}>
+              <RestaurantInfo key={restaurant.id} restaurant={restaurant} />
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "flex-start",
+                  alignItems: "flex-start",
+                }}
+              >
+                {restaurant.tags.map((tag) => (
+                  <View
+                    style={{ marginBottom: 25, marginTop: 10, marginEnd: 5 }}
+                  >
+                    <Badge
+                      status="primary"
+                      textStyle={{ color: "black" }}
+                      badgeStyle={{
+                        padding: 10,
+                        backgroundColor: "#d2d2f9",
+                        borderColor: "blue",
+                      }}
+                      value={tag}
+                      Component={TouchableOpacity}
+                      onPress={() => {
+                        setTagSearch(tag);
+                      }}
+                    />
+                  </View>
+                ))}
+              </View>
+              <RatingWithStar />
+              <Button
+                color="#6495ed"
+                type="raised"
+                title={"See more details"}
+                onPress={() =>
+                  navigation.navigate("Details", { restaurant: restaurant })
+                }
+              />
+            </View>
+          ))}
         </View>
-        }
+      )}
     </View>
   );
 }
