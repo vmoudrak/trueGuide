@@ -6,10 +6,24 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import About from "./components/About/About";
 import DetailsContainer from "./components/Details/DetailsContainer";
 import Home from "./components/Home";
+import ApolloClient from "apollo-boost"; //connect with our server which is running at backend
+import { ApolloProvider } from "react-apollo";
+
+
+const client = new ApolloClient({
+	uri: "http://localhost:3001"
+});
+
+
+	
+	
+
 
 export default function App() {
   const Stack = createStackNavigator();
   return (
+    <ApolloProvider client={client}>
+
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
@@ -44,6 +58,7 @@ export default function App() {
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
+    </ApolloProvider>
   );
 }
 _storeData = async () => {
